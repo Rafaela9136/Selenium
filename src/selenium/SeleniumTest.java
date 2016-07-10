@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
 import junit.framework.Assert;
 
 
@@ -42,4 +41,9 @@ public class SeleniumTest {
 		Assert.assertNull(continuar);
 	}
 
+	public static void main(String[] args) {
+		SeleniumTest selenium = new SeleniumTest();
+		selenium.testAdicionarProduto();
+	}
+	
 }
