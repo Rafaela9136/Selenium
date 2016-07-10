@@ -1,11 +1,12 @@
 package selenium;
 
 import org.junit.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import junit.framework.Assert;
+import pageObjects.HomePage;
+import pageObjects.ProductPage;
 
 
 public class SeleniumTest {
@@ -15,14 +16,12 @@ public class SeleniumTest {
 		WebDriver driver = new FirefoxDriver();
 		driver.navigate().to("http://www.pontofrio.com.br");
 		
-		WebElement produto = driver.findElement(By.id("177974507"));
-		produto.click();
+		HomePage.product(driver).click();
 		
-		WebElement botao = driver.findElement(By.id("btnAdicionarCarrinho"));
-		botao.click();
+		ProductPage.AddToCartBtn(driver).click();
 		
-		WebElement continuar = driver.findElement(By.className("continue-button"));
-		Assert.assertNotNull(continuar);
+		WebElement continueBtn = ProductPage.continueBtn(driver);
+		Assert.assertNotNull(continueBtn);
 	}
 	
 	
@@ -31,19 +30,12 @@ public class SeleniumTest {
 		WebDriver driver = new FirefoxDriver();
 		driver.navigate().to("http://www.pontofrio.com.br");
 		
-		WebElement produto = driver.findElement(By.id("177974507"));
-		produto.click();
+		HomePage.product(driver).click();
 		
-		WebElement botao = driver.findElement(By.id("btnAdicionarCarrinho"));
-		botao.click();
+		ProductPage.AddToCartBtn(driver).click();
 		
-		WebElement continuar = driver.findElement(By.className("continue-button"));
-		Assert.assertNull(continuar);
-	}
-
-	public static void main(String[] args) {
-		SeleniumTest selenium = new SeleniumTest();
-		selenium.testAdicionarProduto();
+		WebElement continueBtn = ProductPage.continueBtn(driver);
+		Assert.assertNull(continueBtn);
 	}
 	
 }
